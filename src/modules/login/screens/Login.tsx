@@ -5,6 +5,7 @@ import Input from "../../../shared/components/input/Input";
 import { ContainerLogin } from "../styles/login.style";
 import Button from "../../../shared/components/button/Button";
 import { theme } from "../../../shared/components/themes/theme";
+import { Icon } from "../../../shared/components/icon/icon";
 
 
 const Login = () => {
@@ -15,6 +16,7 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>
+                <Icon name="home3" color={'blue'} size={44}/>
                 <Input 
                 //errorMessage="Usuário ou senha inválidos" 
                 title='Email:'
