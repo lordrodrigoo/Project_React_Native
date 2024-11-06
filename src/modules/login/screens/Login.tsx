@@ -16,12 +16,9 @@ const Login = () => {
     return (
         <View>
             <ContainerLogin>
-                <Icon name="home3" color={'blue'} size={44}/>
-                <Input 
-                //errorMessage="Usuário ou senha inválidos" 
-                title='Email:'
-                placeholder="Digite seu email" 
-                />
+                <Input margin='0px 0px 8px 0px'title='Email:' placeholder="Digite seu email" />
+                <Input secureTextEntry title='Senha:' placeholder="Digite sua senha" />
+
                 <Button
                 type={theme.buttonsTheme.primary}
                 margin="16px"
