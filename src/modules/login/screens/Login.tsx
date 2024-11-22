@@ -1,17 +1,21 @@
 import { View } from 'react-native';
-import React from 'react';
+import axios from 'axios';
 
 import Input from '../../../shared/components/input/Input';
 import { ContainerLogin, Imagelogo } from '../styles/login.style';
 import Button from '../../../shared/components/button/Button';
 import { theme } from '../../../shared/components/themes/theme';
-import { Icon } from '../../../shared/components/icon/icon';
 
 const Login = () => {
-  const handleOnPress = () => {
+  const handleOnPress = async () => {
     console.log('Clicou');
-  };
 
+    const returnBD = await axios.get(
+      'http://172.18.96.1:8080/correios/01029-010',
+    );
+
+    console.log('returnBD', returnBD.data);
+  };
   return (
     <View>
       <ContainerLogin>
