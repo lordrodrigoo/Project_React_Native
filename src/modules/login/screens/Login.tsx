@@ -1,21 +1,21 @@
 import { View } from 'react-native';
-import axios from 'axios';
-
 import Input from '../../../shared/components/input/Input';
 import { ContainerLogin, Imagelogo } from '../styles/login.style';
 import Button from '../../../shared/components/button/Button';
 import { theme } from '../../../shared/components/themes/theme';
+import { UseLogin } from '../hooks/useLogin';
 
 const Login = () => {
-  const handleOnPress = async () => {
-    console.log('Clicou');
+  const {
+    email,
+    password,
+    loading,
+    errorMessage,
+    handleOnPress,
+    handleOnChangeEmail,
+    handleOnChangePassword,
+  } = UseLogin();
 
-    const returnBD = await axios.get(
-      'http://172.18.96.1:8080/correios/01029-010',
-    );
-
-    console.log('returnBD', returnBD.data);
-  };
   return (
     <View>
       <ContainerLogin>
@@ -24,14 +24,25 @@ const Login = () => {
           source={require('../../../assets/images/transparent_logo.png')}
         />
         <Input
+          value={email}
+          errorMessage={errorMessage}
           margin="0px 0px 8px 0px"
           title="Email:"
           placeholder="Digite seu email"
+          onChange={handleOnChangeEmail}
         />
-        <Input secureTextEntry title="Senha:" placeholder="Digite sua senha" />
+        <Input
+          errorMessage={errorMessage}
+          value={password}
+          secureTextEntry
+          title="Senha:"
+          placeholder="Digite sua senha"
+          onChange={handleOnChangePassword}
+        />
 
         <Button
           type={theme.buttonsTheme.primary}
+          loading={loading}
           margin="16px"
           title="ENTRAR"
           onPress={handleOnPress}
